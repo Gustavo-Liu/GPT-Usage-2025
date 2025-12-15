@@ -1,0 +1,296 @@
+{
+  "generated_at": "2025-12-15T11:05:56.827460",
+  "overview": {
+    "total_conversations": 800,
+    "total_messages": 13146,
+    "usage_days": 300,
+    "daily_avg_conversations": 2.7,
+    "daily_avg_messages": 43.8
+  },
+  "conversation_types": {
+    "technical": {
+      "count": 463,
+      "percentage": 57.9,
+      "description": "深度技术咨询（编程、统计建模、数据分析）"
+    },
+    "business": {
+      "count": 55,
+      "percentage": 6.9,
+      "description": "商务文档优化（PPT、邮件、报告）"
+    },
+    "creative": {
+      "count": 129,
+      "percentage": 16.1,
+      "description": "创意设计协作（图像生成、3D打印、品牌设计）"
+    },
+    "learning": {
+      "count": 120,
+      "percentage": 15.0,
+      "description": "专业知识学习（概念解释、知识问答）"
+    },
+    "daily": {
+      "count": 40,
+      "percentage": 5.0,
+      "description": "日常实用咨询（旅行、购物、生活）"
+    }
+  },
+  "technical": {
+    "code": {
+      "conversations": 160,
+      "conversation_percentage": 20.0,
+      "messages": 377,
+      "message_percentage": 2.9,
+      "languages": [
+        "R",
+        "Python",
+        "SQL"
+      ]
+    },
+    "image": {
+      "conversations": 118,
+      "conversation_percentage": 14.8,
+      "messages": 290,
+      "message_percentage": 2.2,
+      "types": [
+        "图像识别",
+        "创意生成",
+        "技术处理"
+      ]
+    },
+    "tool": {
+      "conversations": 347,
+      "conversation_percentage": 43.4,
+      "messages": 2049,
+      "message_percentage": 15.6,
+      "usage_types": [
+        "搜索",
+        "图像生成",
+        "文件处理"
+      ]
+    },
+    "multimodal": {
+      "conversations": 129,
+      "conversation_percentage": 16.1,
+      "messages": 311,
+      "message_percentage": 2.4
+    }
+  },
+  "interaction": {
+    "conversation_length": {
+      "average": 16.4,
+      "median": 10.0,
+      "max": 226,
+      "min": 4
+    },
+    "complexity": {
+      "complex_conversations": 148,
+      "complex_percentage": 18.5,
+      "threshold": 20
+    },
+    "depth": {
+      "average": 18.2,
+      "max": 226
+    },
+    "interaction_modes": {
+      "collaborative": 40,
+      "guidance": 35,
+      "qa": 25
+    }
+  },
+  "time_patterns": {
+    "active_hours": {
+      "most_active": 18,
+      "least_active": 11,
+      "hourly_distribution": {
+        "0": 281,
+        "1": 339,
+        "2": 279,
+        "3": 261,
+        "4": 422,
+        "5": 175,
+        "6": 167,
+        "7": 60,
+        "11": 26,
+        "12": 125,
+        "13": 1022,
+        "14": 1443,
+        "15": 1132,
+        "16": 626,
+        "17": 1261,
+        "18": 1608,
+        "19": 1464,
+        "20": 1162,
+        "21": 553,
+        "22": 351,
+        "23": 389
+      }
+    },
+    "daily_trend": {
+      "dates": [
+        "2025-02-11",
+        "2025-02-12",
+        "2025-02-13",
+        "2025-02-14",
+        "2025-02-17",
+        "2025-02-18",
+        "2025-02-19",
+        "2025-02-20",
+        "2025-02-21",
+        "2025-02-24",
+        "2025-02-25",
+        "2025-02-27",
+        "2025-02-28",
+        "2025-03-02",
+        "2025-03-03",
+        "2025-03-07",
+        "2025-03-09",
+        "2025-03-10",
+        "2025-03-11",
+        "2025-03-13",
+        "2025-03-14",
+        "2025-03-17",
+        "2025-03-18",
+        "2025-03-19",
+        "2025-03-20",
+        "2025-03-21",
+        "2025-03-24",
+        "2025-03-25",
+        "2025-03-26",
+        "2025-03-27"
+      ],
+      "conversations": [
+        5,
+        1,
+        3,
+        2,
+        3,
+        3,
+        4,
+        2,
+        4,
+        4,
+        3,
+        2,
+        4,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        4,
+        5,
+        4,
+        4,
+        5,
+        3,
+        2,
+        4,
+        3
+      ],
+      "messages": [
+        30,
+        24,
+        52,
+        27,
+        44,
+        57,
+        43,
+        43,
+        42,
+        59,
+        29,
+        23,
+        64,
+        9,
+        6,
+        7,
+        18,
+        15,
+        5,
+        12,
+        10,
+        48,
+        73,
+        55,
+        54,
+        59,
+        41,
+        23,
+        29,
+        63
+      ]
+    },
+    "weekly_pattern": {
+      "Friday": 2948,
+      "Monday": 2903,
+      "Saturday": 893,
+      "Sunday": 830,
+      "Thursday": 1397,
+      "Tuesday": 2399,
+      "Wednesday": 1776
+    },
+    "monthly_trend": {
+      "months": [
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ],
+      "conversations": [
+        38,
+        51,
+        119,
+        75,
+        47,
+        69,
+        102,
+        72,
+        94,
+        108,
+        26
+      ],
+      "messages": [
+        537,
+        709,
+        1809,
+        991,
+        768,
+        1081,
+        2383,
+        990,
+        1428,
+        1888,
+        562
+      ]
+    }
+  },
+  "personality": {
+    "iterative_optimization": {
+      "conversations": 194,
+      "percentage": 24.2
+    },
+    "indices": {
+      "tech_depth": 26.6,
+      "creative_exploration": 30.9,
+      "workflow_integration": 92.2
+    },
+    "personality_traits": [
+      "深度探讨型用户",
+      "多话题切换能力",
+      "迭代优化倾向",
+      "结构化思维",
+      "技术整合者",
+      "创新应用者"
+    ]
+  }
+}

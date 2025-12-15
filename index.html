@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 使用习惯分析报告</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1>🎯 AI 使用习惯分析报告</h1>
+            <p class="subtitle">基于 800 个对话，13,146 条消息的深度分析</p>
+        </header>
+
+        <!-- 核心指标卡片 -->
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon">💬</div>
+                <div class="metric-value" id="total-convs">800</div>
+                <div class="metric-label">总对话数</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">📨</div>
+                <div class="metric-value" id="total-msgs">13,146</div>
+                <div class="metric-label">总消息数</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">📅</div>
+                <div class="metric-value" id="usage-days">300</div>
+                <div class="metric-label">使用天数</div>
+            </div>
+            <div class="metric-card highlight">
+                <div class="metric-icon">🔧</div>
+                <div class="metric-value" id="tool-usage">43.4%</div>
+                <div class="metric-label">工具使用率</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">📊</div>
+                <div class="metric-value" id="avg-length">16.4</div>
+                <div class="metric-label">平均对话长度</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">💡</div>
+                <div class="metric-value" id="tech-depth">26.6</div>
+                <div class="metric-label">技术深度指数</div>
+            </div>
+        </section>
+
+        <!-- 对话类型分布 -->
+        <section class="chart-section">
+            <div class="chart-with-explanation">
+                <div class="chart-wrapper">
+                    <h2>📊 对话类型分布</h2>
+                    <div class="chart-container">
+                        <canvas id="conversationTypesChart"></canvas>
+                    </div>
+                </div>
+                <div class="explanation-panel" id="conversationTypesExplanation">
+                    <h3>可视化说明</h3>
+                    <p>此饼图展示了800个对话按使用目的的分布情况，反映了AI在不同场景下的应用模式。</p>
+                    <div class="type-details" id="typeDetails"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技术能力使用 -->
+        <section class="chart-section">
+            <div class="chart-with-explanation">
+                <div class="chart-wrapper">
+                    <h2>🔧 技术能力使用</h2>
+                    <div class="chart-container">
+                        <canvas id="technicalChart"></canvas>
+                    </div>
+                </div>
+                <div class="explanation-panel" id="technicalExplanation">
+                    <h3>技术能力详解</h3>
+                    <div id="technicalDetails"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 时间使用热力图 -->
+        <section class="chart-section">
+            <div class="chart-with-explanation">
+                <div class="chart-wrapper">
+                    <h2>⏰ 活跃时段分析</h2>
+                    <div class="chart-container">
+                        <canvas id="timeChart"></canvas>
+                    </div>
+                </div>
+                <div class="explanation-panel" id="timeExplanation">
+                    <h3>时间使用趋势</h3>
+                    <p id="timeAnalysisText"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 交互模式 -->
+        <section class="chart-section">
+            <div class="chart-with-explanation">
+                <div class="chart-wrapper">
+                    <h2>💬 交互模式分布</h2>
+                    <div class="chart-container">
+                        <canvas id="interactionChart"></canvas>
+                    </div>
+                </div>
+                <div class="explanation-panel" id="interactionExplanation">
+                    <h3>交互模式详解</h3>
+                    <div id="interactionDetails"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 个性化指标雷达图 -->
+        <section class="chart-section">
+            <div class="chart-with-explanation">
+                <div class="chart-wrapper">
+                    <h2>🎯 个性化能力雷达图</h2>
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+                <div class="explanation-panel" id="radarExplanation">
+                    <h3>指标解释与算法</h3>
+                    <div id="radarDetails"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 用户画像 -->
+        <section class="insights-section">
+            <h2>👤 用户画像分析</h2>
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <h3>身份定位</h3>
+                    <p><strong>主业：医疗行业生物统计学家/数据分析师</strong></p>
+                    <ul>
+                        <li>核心工作: 医院质量改进项目</li>
+                        <li>专业领域: 医疗数据分析、统计建模</li>
+                        <li>工作地点: 可能在美国医疗系统</li>
+                    </ul>
+                    <p><strong>副业：创意设计师 & 跨领域探索者</strong></p>
+                    <ul>
+                        <li>3D打印设计与摄影作品集创作</li>
+                        <li>木工爱好者，系统学习技能规划</li>
+                        <li>音乐学习者（声乐技巧）</li>
+                        <li>跨领域知识连接者</li>
+                    </ul>
+                </div>
+                <div class="insight-card">
+                    <h3>核心使用模式</h3>
+                    <div class="usage-mode">
+                        <div class="mode-item">
+                            <span class="mode-percentage">60%</span>
+                            <span class="mode-label">专业工作加速器</span>
+                        </div>
+                        <div class="mode-item">
+                            <span class="mode-percentage">25%</span>
+                            <span class="mode-label">跨领域知识桥梁</span>
+                        </div>
+                        <div class="mode-item">
+                            <span class="mode-percentage">15%</span>
+                            <span class="mode-label">个人兴趣探索</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <h3>AI 关系定位</h3>
+                    <div class="role-tags">
+                        <span class="tag">技术导师</span>
+                        <span class="tag">创意伙伴</span>
+                        <span class="tag">效率工具</span>
+                    </div>
+                    <div class="ai-relationship-details">
+                        <div class="relationship-item">
+                            <strong>🔧 技术导师：</strong>
+                            <p>教导高级统计建模方法（GLMM、GAM、Firth逻辑回归）、R Shiny应用开发、医疗质量指标分析方法</p>
+                        </div>
+                        <div class="relationship-item">
+                            <strong>🎨 创意伙伴：</strong>
+                            <p>提供3D打印模型设计、Logo和品牌视觉设计、摄影作品集文案、创意图像生成建议</p>
+                        </div>
+                        <div class="relationship-item">
+                            <strong>⚡ 效率工具：</strong>
+                            <p>在协作（PPT/邮件/周报）、代码（R Shiny调试/可视化）、探索（3D设计/技能规划）方面显著提升效率</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关键发现 -->
+        <section class="insights-section">
+            <h2>🔍 关键发现与洞察</h2>
+            <div class="findings-grid">
+                <div class="finding-card">
+                    <div class="finding-icon">⭐</div>
+                    <h3>工具使用率超预期</h3>
+                    <p><strong>43.4%</strong> 的对话使用了工具功能，远超平均用户水平，说明用户深度探索 AI 能力边界。</p>
+                </div>
+                <div class="finding-card">
+                    <div class="finding-icon">🎯</div>
+                    <h3>技术深度与广度并存</h3>
+                    <p>深度: 高级统计方法、复杂编程。广度: 跨领域应用（医疗+创意+商务）。</p>
+                </div>
+                <div class="finding-card">
+                    <div class="finding-icon">📐</div>
+                    <h3>结构化工作风格</h3>
+                    <p>平均对话 16.4 条消息，18.5% 的对话超过 20 条，偏好系统性分析和框架化解决方案。</p>
+                </div>
+                <div class="finding-card">
+                    <div class="finding-icon">🌈</div>
+                    <h3>多模态能力充分利用</h3>
+                    <p>16.1% 的对话涉及多模态内容，图片分析 + 创意生成，技术处理 + 视觉设计。</p>
+                </div>
+                <div class="finding-card">
+                    <div class="finding-icon">🔄</div>
+                    <h3>迭代优化的工作习惯</h3>
+                    <p>约 40% 的对话涉及多次修改，追求精确和完美的解决方案，将 AI 作为协作伙伴。</p>
+                </div>
+                <div class="finding-card">
+                    <div class="finding-icon">🚀</div>
+                    <h3>使用习惯持续演变</h3>
+                    <p>从简单问答 → 深度咨询 → 综合应用，从单一领域 → 跨领域整合。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 个性化标签 -->
+        <section class="insights-section">
+            <h2>✨ 个性化特点标签</h2>
+            <div class="tags-container">
+                <span class="personality-tag">深度探讨型用户</span>
+                <span class="personality-tag">多话题切换能力</span>
+                <span class="personality-tag">迭代优化倾向</span>
+                <span class="personality-tag">结构化思维</span>
+                <span class="personality-tag">技术整合者</span>
+                <span class="personality-tag">创新应用者</span>
+                <span class="personality-tag">工具探索先锋</span>
+                <span class="personality-tag">多模态创新者</span>
+            </div>
+        </section>
+
+        <!-- 专业领域 -->
+        <section class="insights-section">
+            <h2>💼 专业领域画像</h2>
+            <div class="domain-grid">
+                <div class="domain-card">
+                    <h3>医疗数据分析 (35%)</h3>
+                    <ul>
+                        <li>RSMR、CMS 星级评级</li>
+                        <li>医院质量改进</li>
+                        <li>统计建模应用</li>
+                    </ul>
+                </div>
+                <div class="domain-card">
+                    <h3>统计建模 (25%)</h3>
+                    <ul>
+                        <li>GLMM、GAM</li>
+                        <li>倾向性评分</li>
+                        <li>队列理论</li>
+                    </ul>
+                </div>
+                <div class="domain-card">
+                    <h3>数据可视化 (15%)</h3>
+                    <ul>
+                        <li>R Shiny 应用</li>
+                        <li>Power BI、Tableau</li>
+                        <li>图表优化</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>数据生成时间: 2025-12-12 | 基于 800 个对话，13,146 条消息的深度分析</p>
+            <p>分析方法: 数据挖掘 + AI 总结分析</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
+
