@@ -3,6 +3,23 @@
 .env.local
 .env.*.local
 
+# Deployment scripts with tokens (keep locally, don't commit)
+deploy_now.py
+fix_and_deploy.py
+quick_deploy.py
+push_and_deploy.sh
+
+# Deployment docs with tokens
+DEPLOY.md
+DEPLOY_INSTRUCTIONS.md
+FIX_DEPLOYMENT.md
+README_DEPLOY.md
+
+# Analysis scripts that may contain tokens (for local use only)
+generate_detailed_explanations.py
+generate_conversation_summaries.py
+test_single_batch.py
+
 # Python
 __pycache__/
 *.py[cod]

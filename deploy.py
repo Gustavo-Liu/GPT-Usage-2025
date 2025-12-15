@@ -1,65 +1,42 @@
 #!/usr/bin/env python3
 """
-使用 AI Builders 部署 API 部署网站
+安全的部署脚本 - 使用环境变量中的 API token
 """
 
 import os
 import json
 import requests
 from dotenv import load_dotenv
-import subprocess
 import sys
 
 load_dotenv()
 
-def get_git_repo_url():
-    """获取 git 仓库 URL"""
-    try:
-        result = subprocess.run(
-            ['git', 'remote', 'get-url', 'origin'],
-            capture_output=True,
-            text=True,
-            check=True
-        )
-        return result.stdout.strip()
-    except:
-        return None
-
 def deploy():
     """部署到 AI Builders"""
     
-    # 获取 API token
+    # 从环境变量获取 API token
     api_token = os.getenv("AI_BUILDER_TOKEN")
     if not api_token:
-        print("❌ 错误: 未找到 AI_BUILDER_TOKEN")
-        print("请确保 .env 文件中有 AI_BUILDER_TOKEN")
+        print("❌ 错误: 未找到 AI_BUILDER_TOKEN 环境变量")
+        print("请在 .env 文件中设置 AI_BUILDER_TOKEN")
         sys.exit(1)
     
-    # 获取仓库 URL
-    repo_url = get_git_repo_url()
-    if not repo_url:
-        print("❌ 错误: 未找到 git 远程仓库")
-        print("请先添加 git remote:")
-        print("  git remote add origin https://github.com/your-username/your-repo.git")
-        sys.exit(1)
+    # 配置
+    repo_url = "https://github.com/Gustavo-Liu/GPT-Usage-2025.git"
+    service_name = "ai-usage-analytics"
+    branch = "main"
+    port = 8000
     
-    # 部署参数
-    service_name = input("请输入服务名称 (默认: ai-usage-analytics): ").strip() or "ai-usage-analytics"
-    branch = input("请输入分支名称 (默认: main): ").strip() or "main"
-    port = int(input("请输入端口 (默认: 8000): ").strip() or "8000")
+    print("=" * 60)
+    print("🚀 部署 AI 使用习惯分析网站")
+    print("=" * 60)
+    print(f"\n📋 部署配置:")
+    print(f"   仓库: {repo_url}")
+    print(f"   服务名称: {service_name}")
+    print(f"   分支: {branch}")
+    print(f"   端口: {port}\n")
     
-    print(f"\n部署配置:")
-    print(f"  仓库 URL: {repo_url}")
-    print(f"  服务名称: {service_name}")
-    print(f"  分支: {branch}")
-    print(f"  端口: {port}")
-    
-    confirm = input("\n确认部署? (y/n): ").strip().lower()
-    if confirm != 'y':
-        print("取消部署")
-        sys.exit(0)
-    
-    # 调用部署 API
+    # API 请求
     api_url = "https://space.ai-builders.com/backend/v1/deployments"
     headers = {
         "Authorization": f"Bearer {api_token}",
@@ -73,40 +50,37 @@ def deploy():
         "port": port
     }
     
-    print(f"\n正在部署到 AI Builders...")
-    
     try:
-        response = requests.post(api_url, headers=headers, json=payload)
-        response.raise_for_status()
+        print("⏳ 正在提交部署请求...")
+        response = requests.post(api_url, headers=headers, json=payload, timeout=30)
         
-        result = response.json()
+        print(f"\n📡 HTTP 状态码: {response.status_code}")
         
-        print(f"\n✅ 部署请求已提交!")
-        print(f"\n部署信息:")
-        print(f"  服务名称: {result.get('service_name', service_name)}")
-        print(f"  状态: {result.get('status', 'queued')}")
-        print(f"  消息: {result.get('message', '')}")
-        
-        if result.get('public_url'):
+        if response.status_code == 202:
+            result = response.json()
+            print("\n✅ 部署请求已成功提交!\n")
+            print("📦 部署信息:")
+            print(json.dumps(result, indent=2, ensure_ascii=False))
+            
+            public_url = result.get('public_url') or f"https://{service_name}.ai-builders.space"
             print(f"\n🌐 部署完成后访问:")
-            print(f"  {result.get('public_url')}")
+            print(f"   {public_url}")
+            print(f"\n⏰ 预计等待时间: 5-10 分钟")
+            
         else:
-            print(f"\n🌐 部署完成后访问:")
-            print(f"  https://{service_name}.ai-builders.space")
-        
-        print(f"\n⏳ 请等待 5-10 分钟完成部署")
-        print(f"   可以查看部署状态或等待完成通知")
-        
-    except requests.exceptions.RequestException as e:
-        print(f"\n❌ 部署失败: {e}")
-        if hasattr(e, 'response') and e.response:
+            print(f"\n❌ 部署失败 (状态码: {response.status_code})")
             try:
-                error_data = e.response.json()
-                print(f"错误详情: {error_data}")
+                error_data = response.json()
+                print(json.dumps(error_data, indent=2, ensure_ascii=False))
             except:
-                print(f"响应: {e.response.text}")
+                print(f"响应内容:\n{response.text}")
+            sys.exit(1)
+            
+    except Exception as e:
+        print(f"\n❌ 错误: {e}")
+        import traceback
+        traceback.print_exc()
         sys.exit(1)
 
 if __name__ == "__main__":
     deploy()
-
